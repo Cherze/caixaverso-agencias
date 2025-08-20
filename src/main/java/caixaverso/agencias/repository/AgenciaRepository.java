@@ -4,15 +4,17 @@ import caixaverso.agencias.model.Agencia;
 import io.quarkus.hibernate.orm.panache.PanacheRepository;
 import jakarta.enterprise.context.ApplicationScoped;
 
+import java.util.Optional;
+
 @ApplicationScoped
 public class AgenciaRepository implements PanacheRepository<Agencia> {
 
-    public Agencia findByNomeAgencia(String nome) {
+    public Optional<Agencia> findByNomeAgencia(String nome) {
 
-        return find("nome", nome).firstResult();
+        return find("nomeAgencia", nome).firstResultOptional();
     }
-    public Agencia findByCgc(int cgc){
-        return find("cgc", cgc).firstResult();
+    public Optional<Agencia> findByCgc(int cgc){
+        return find("cgc", cgc).firstResultOptional();
     }
 
 }
