@@ -1,10 +1,9 @@
 package caixaverso.agencias.controller;
 
 import caixaverso.agencias.dto.AgenciaDTO;
-import caixaverso.agencias.dto.mapper.AgenciaMapper;
 import caixaverso.agencias.model.Agencia;
 import caixaverso.agencias.repository.AgenciaRepository;
-import caixaverso.agencias.service.CriarAgenciaService;
+import caixaverso.agencias.service.AgenciaService;
 import jakarta.transaction.Transactional;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
@@ -22,9 +21,9 @@ public class AgenciasController {
 //Construtor para controller (@inject)
 
     private final AgenciaRepository repository;
-    private final CriarAgenciaService agenciaService;
+    private final AgenciaService agenciaService;
 
-    public AgenciasController(AgenciaRepository repository, CriarAgenciaService agenciaService) {
+    public AgenciasController(AgenciaRepository repository, AgenciaService agenciaService) {
         this.repository = repository;
         this.agenciaService = agenciaService;
     }
@@ -37,17 +36,16 @@ public class AgenciasController {
     @GET
     @Path("/buscar")
     public Response getAgencia(@QueryParam("cgc") int cgc) {
-        Optional<Agencia> agencia = repository.findByCgc(cgc);
+        Agencia agencia = repository.findByCgc(cgc);
         return Response.status(Response.Status.OK).entity(agencia).build();
     }
     @PUT
-    @Path("/alterar")
-    public Response updateAgencia(@PathParam("cgc") int cgc){
-        Optional<Agencia> agencia = repository.findByCgc(cgc);
-        //agencia.setNomeAgencia("");
-        //agencia.setNomeGestor("");
-        //agencia.setEndereco("");
-        return Response.status(Response.Status.OK).entity(agencia).build();
+    @Transactional
+    @Path("/{cgc}")
+    public Response updateAgencia(@PathParam("cgc") int cgc, AgenciaDTO agenciaDto){
+        agenciaService.update(cgc,agenciaDto);
+        //Optional<Agencia> agencia = repository.findByCgc(cgc);
+        return Response.status(Response.Status.OK).build();
     }
 
     @POST

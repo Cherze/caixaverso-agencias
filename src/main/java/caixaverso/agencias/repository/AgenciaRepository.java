@@ -13,8 +13,8 @@ public class AgenciaRepository implements PanacheRepository<Agencia> {
 
         return find("nomeAgencia", nome).firstResultOptional();
     }
-    public Optional<Agencia> findByCgc(int cgc){
-        return find("cgc", cgc).firstResultOptional();
+    public Agencia findByCgc(int cgc){
+        return find("cgc", cgc).firstResult();
     }
 
 }
