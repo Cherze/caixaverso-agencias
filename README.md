@@ -1,9 +1,13 @@
 # Agencias - Projeto Grupo 3
 
 Feito por:
+
   Cherze Carvalho Freitas
+
   Raphael dos Santos Pinto
+  
   Fabio Monteiro Crispim
+  
   Marcos Guilherme Grandi
 
 ## Descrição
