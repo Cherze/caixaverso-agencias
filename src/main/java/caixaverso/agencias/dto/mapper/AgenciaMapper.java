@@ -25,4 +25,17 @@ public class AgenciaMapper {
         agencia.setEndereco(agenciaDto.getEndereco());
         return agencia;
     }
+
+    public static AgenciaDTO toDto(Agencia agencia){
+        if (agencia == null){
+            return null;
+        }
+        AgenciaDTO agenciaDto = new AgenciaDTO();
+        agenciaDto.setCgc(agencia.getCgc());
+        agenciaDto.setNomeAgencia(agencia.getNomeAgencia());
+        agenciaDto.setEndereco(agencia.getEndereco());
+        agenciaDto.setDataInauguracao(agencia.getDataInauguracao());
+        agenciaDto.setNomeGestor(agencia.getNomeGestor());
+        return agenciaDto;
+    }
 }

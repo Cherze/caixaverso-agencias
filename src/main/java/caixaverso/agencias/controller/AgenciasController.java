@@ -8,9 +8,9 @@ import jakarta.transaction.Transactional;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
+import org.jboss.resteasy.reactive.RestPath;
 
 import java.util.List;
-import java.util.Optional;
 
 @Path("/agencias")
 @Consumes(MediaType.APPLICATION_JSON)
@@ -20,32 +20,12 @@ public class AgenciasController {
 
 //Construtor para controller (@inject)
 
-    private final AgenciaRepository repository;
+    //private final AgenciaRepository repository;
     private final AgenciaService agenciaService;
 
     public AgenciasController(AgenciaRepository repository, AgenciaService agenciaService) {
-        this.repository = repository;
+       // this.repository = repository;
         this.agenciaService = agenciaService;
-    }
-
-    @GET
-    public Response getAgencias() {
-        List<Agencia> agencias = repository.findAll().list();
-        return Response.status(Response.Status.OK).entity(agencias).build();
-    }
-    @GET
-    @Path("/buscar")
-    public Response getAgencia(@QueryParam("cgc") int cgc) {
-        Agencia agencia = repository.findByCgc(cgc);
-        return Response.status(Response.Status.OK).entity(agencia).build();
-    }
-    @PUT
-    @Transactional
-    @Path("/{cgc}")
-    public Response updateAgencia(@PathParam("cgc") int cgc, AgenciaDTO agenciaDto){
-        agenciaService.update(cgc,agenciaDto);
-        //Optional<Agencia> agencia = repository.findByCgc(cgc);
-        return Response.status(Response.Status.OK).build();
     }
 
     @POST
@@ -55,5 +35,36 @@ public class AgenciasController {
         //repository.persist(AgenciaMapper.toEntity(agenciaDto));
         return Response.status(Response.Status.CREATED).entity(agencia).build();
     }
+
+    @GET
+    public Response getAgencias() {
+        List<AgenciaDTO> agencias = agenciaService.getAll();
+        return Response.status(Response.Status.OK).entity(agencias).build();
+    }
+
+    @GET
+    @Path("/{cgc}")
+    public Response getByCgc(@PathParam("cgc") int cgc) {
+        //Agencia agencia = repository.findByCgc(cgc);
+        return Response.status(Response.Status.OK).entity(agenciaService.getByCgc(cgc)).build();
+    }
+
+    @PUT
+    @Transactional
+    @Path("/{cgc}")
+    public Response updateAgencia(@PathParam("cgc") int cgc, AgenciaDTO agenciaDto){
+        agenciaService.update(cgc,agenciaDto);
+        //Optional<Agencia> agencia = repository.findByCgc(cgc);
+        return Response.status(Response.Status.OK).build();
+    }
+
+    @Path("/{cgc}")
+    @DELETE
+    @Transactional
+    public Response deleteAgencia(@PathParam("cgc") int cgc) {
+        agenciaService.delete(cgc);
+        return Response.status(Response.Status.NO_CONTENT).build();
+    }
+
 
 }
