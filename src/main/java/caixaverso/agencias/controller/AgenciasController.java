@@ -11,6 +11,7 @@ import jakarta.ws.rs.core.Response;
 import org.jboss.resteasy.reactive.RestPath;
 
 import java.util.List;
+import java.util.Map;
 
 @Path("/agencias")
 @Consumes(MediaType.APPLICATION_JSON)
@@ -57,14 +58,20 @@ public class AgenciasController {
         //Optional<Agencia> agencia = repository.findByCgc(cgc);
         return Response.status(Response.Status.OK).build();
     }
-
-    @Path("/{cgc}")
     @DELETE
+    @Path("/{cgc}")
     @Transactional
     public Response deleteAgencia(@PathParam("cgc") int cgc) {
         agenciaService.delete(cgc);
         return Response.status(Response.Status.NO_CONTENT).build();
     }
 
+    @PATCH
+    @Path("/{cgc")
+    @Transactional
+    public Response updateAgenciaParcial(@PathParam("cgc") int cgc, Map<String, Object> atualizacao){
+        agenciaService.updateParcial(cgc, atualizacao);
+        return Response.status(Response.Status.OK).build();
+    }
 
 }

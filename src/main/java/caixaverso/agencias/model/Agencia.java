@@ -2,6 +2,7 @@ package caixaverso.agencias.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
+import org.hibernate.annotations.processing.Pattern;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -20,7 +21,9 @@ public class Agencia {
     @Column(name = "nome_gestor", nullable = false)
     @JsonProperty("nome_gestor")
     private String nomeGestor;
-    @Column(name = "cgc", nullable = false)
+    //@NotBlank(message = "CGC é obrigatório")
+    //@Pattern(regexp = "\\d{4}", message = "CGC deve ter exatamente 4 dígitos")
+    @Column(name = "cgc", nullable = false, length=4)
     private int cgc;
     @Column(name = "data_inauguracao", nullable = false)
     @JsonProperty("data_inauguracao")

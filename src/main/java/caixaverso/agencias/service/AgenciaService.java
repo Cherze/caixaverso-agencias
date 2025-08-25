@@ -9,7 +9,9 @@ import caixaverso.agencias.repository.AgenciaRepository;
 import io.quarkus.hibernate.orm.panache.PanacheRepositoryBase;
 import jakarta.enterprise.context.ApplicationScoped;
 
+import java.time.LocalDate;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @ApplicationScoped
@@ -56,5 +58,32 @@ public class AgenciaService{
             throw new AgenciaNaoExisteException("Agencia com CGC " + cgc + " nao encontrada.");
         }
         return agencia;
+    }
+
+    public void updateParcial(int cgc, Map<String, Object> atualizacao) {
+        Agencia agencia = findByCgc(cgc);
+        atualizacao.forEach((key, value) -> {
+            switch (key) {
+                case "cgc":
+                    agencia.setCgc(Integer.parseInt(value.toString()));
+                    break;
+                case "nomeAgencia":
+                    agencia.setNomeAgencia(value.toString());
+                    break;
+                case "nomeGestor":
+                    agencia.setNomeGestor(value.toString());
+                    break;
+                case "endereco":
+                    agencia.setEndereco(value.toString());
+                    break;
+                case "dataInauguracao":
+                    agencia.setDataInauguracao(LocalDate.parse(value.toString()));
+                    break;
+                //case "cep":
+                    //agencia.cep = (String) value;
+                    //buscarDadosCep(agencia);
+                    //break;
+            }
+        });
     }
 }
