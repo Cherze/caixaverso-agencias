@@ -67,7 +67,7 @@ public class AgenciasController {
     }
 
     @PATCH
-    @Path("/{cgc")
+    @Path("/{cgc}")
     @Transactional
     public Response updateAgenciaParcial(@PathParam("cgc") int cgc, Map<String, Object> atualizacao){
         agenciaService.updateParcial(cgc, atualizacao);

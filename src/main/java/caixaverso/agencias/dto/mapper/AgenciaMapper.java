@@ -20,9 +20,11 @@ public class AgenciaMapper {
         if (agenciaDto == null){
             return null;
         }
+        agencia.setCgc(agenciaDto.getCgc());
         agencia.setNomeAgencia(agenciaDto.getNomeAgencia());
         agencia.setNomeGestor(agenciaDto.getNomeGestor());
         agencia.setEndereco(agenciaDto.getEndereco());
+        agencia.setDataInauguracao(agenciaDto.getDataInauguracao());
         return agencia;
     }
 

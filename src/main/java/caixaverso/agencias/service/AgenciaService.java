@@ -67,16 +67,16 @@ public class AgenciaService{
                 case "cgc":
                     agencia.setCgc(Integer.parseInt(value.toString()));
                     break;
-                case "nomeAgencia":
+                case "nome_agencia":
                     agencia.setNomeAgencia(value.toString());
                     break;
-                case "nomeGestor":
+                case "nome_gestor":
                     agencia.setNomeGestor(value.toString());
                     break;
                 case "endereco":
                     agencia.setEndereco(value.toString());
                     break;
-                case "dataInauguracao":
+                case "data_inauguracao":
                     agencia.setDataInauguracao(LocalDate.parse(value.toString()));
                     break;
                 //case "cep":
