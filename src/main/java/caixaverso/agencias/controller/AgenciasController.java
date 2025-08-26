@@ -4,12 +4,15 @@ import caixaverso.agencias.dto.AgenciaDTO;
 import caixaverso.agencias.model.Agencia;
 import caixaverso.agencias.repository.AgenciaRepository;
 import caixaverso.agencias.service.AgenciaService;
+import caixaverso.agencias.util.ExcelExporter;
 import jakarta.transaction.Transactional;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
-import org.jboss.resteasy.reactive.RestPath;
-
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+//import org.eclipse.microprofile.openapi.annotations.Operation;
+//import org.eclipse.microprofile.openapi.annotations.tags.Tag;
+import java.io.ByteArrayOutputStream;
 import java.util.List;
 import java.util.Map;
 
@@ -72,6 +75,26 @@ public class AgenciasController {
     public Response updateAgenciaParcial(@PathParam("cgc") int cgc, Map<String, Object> atualizacao){
         agenciaService.updateParcial(cgc, atualizacao);
         return Response.status(Response.Status.OK).build();
+    }
+
+    @GET
+    @Path("/export/excel")
+    @Produces("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
+
+    public Response exportToExcel() {
+        try {
+            List<AgenciaDTO> agenciasDto = agenciaService.getAll();
+            XSSFWorkbook workbook = ExcelExporter.exportToExcel(agenciasDto);
+
+            ByteArrayOutputStream stream = new ByteArrayOutputStream();
+            workbook.write(stream);
+
+            return Response.ok(stream.toByteArray())
+                    .header("Content-Disposition", "attachment; filename=agencias.xlsx")
+                    .build();
+        } catch (Exception e) {
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
+        }
     }
 
 }
