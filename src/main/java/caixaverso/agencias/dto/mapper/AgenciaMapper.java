@@ -3,8 +3,6 @@ package caixaverso.agencias.dto.mapper;
 import caixaverso.agencias.dto.AgenciaDTO;
 import caixaverso.agencias.model.Agencia;
 
-import java.util.Optional;
-
 public class AgenciaMapper {
 
     public static Agencia toEntity(AgenciaDTO agenciaDTO) {
@@ -12,7 +10,7 @@ public class AgenciaMapper {
         agencia.setNomeAgencia(agenciaDTO.getNomeAgencia());
         agencia.setDataInauguracao(agenciaDTO.getDataInauguracao());
         agencia.setCgc(agenciaDTO.getCgc());
-        agencia.setEndereco(agenciaDTO.getEndereco());
+        agencia.setCep(agenciaDTO.getCep());
         agencia.setNomeGestor(agenciaDTO.getNomeGestor());
         return agencia;
     }
@@ -23,7 +21,7 @@ public class AgenciaMapper {
         agencia.setCgc(agenciaDto.getCgc());
         agencia.setNomeAgencia(agenciaDto.getNomeAgencia());
         agencia.setNomeGestor(agenciaDto.getNomeGestor());
-        agencia.setEndereco(agenciaDto.getEndereco());
+        agencia.setCep(agenciaDto.getCep());
         agencia.setDataInauguracao(agenciaDto.getDataInauguracao());
         return agencia;
     }
@@ -35,9 +33,11 @@ public class AgenciaMapper {
         AgenciaDTO agenciaDto = new AgenciaDTO();
         agenciaDto.setCgc(agencia.getCgc());
         agenciaDto.setNomeAgencia(agencia.getNomeAgencia());
-        agenciaDto.setEndereco(agencia.getEndereco());
+        agenciaDto.setCep(agencia.getCep());
         agenciaDto.setDataInauguracao(agencia.getDataInauguracao());
         agenciaDto.setNomeGestor(agencia.getNomeGestor());
+        agenciaDto.setCidade(agencia.getCidade());
+        agenciaDto.setEstado(agencia.getEstado());
         return agenciaDto;
     }
 }

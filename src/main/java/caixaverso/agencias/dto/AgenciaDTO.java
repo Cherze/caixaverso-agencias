@@ -13,7 +13,9 @@ public class AgenciaDTO {
     private int cgc;
     @JsonProperty("data_inauguracao")
     private LocalDate dataInauguracao;
-    private String endereco;
+    private String cep;
+    private String estado;
+    private String cidade;
 
     public String getNomeAgencia() {
         return nomeAgencia;
@@ -47,11 +49,27 @@ public class AgenciaDTO {
         this.dataInauguracao = dataInauguracao;
     }
 
-    public String getEndereco() {
-        return endereco;
+    public String getCep() {
+        return cep;
     }
 
-    public void setEndereco(String endereco) {
-        this.endereco = endereco;
+    public void setCep(String cep) {
+        this.cep = cep;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
+    public String getCidade() {
+        return cidade;
+    }
+
+    public void setCidade(String cidade) {
+        this.cidade = cidade;
     }
 }

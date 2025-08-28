@@ -24,11 +24,10 @@ public class AgenciasController {
 
 //Construtor para controller (@inject)
 
-    //private final AgenciaRepository repository;
     private final AgenciaService agenciaService;
 
-    public AgenciasController(AgenciaRepository repository, AgenciaService agenciaService) {
-       // this.repository = repository;
+    public AgenciasController(AgenciaService agenciaService) {
+
         this.agenciaService = agenciaService;
     }
 
@@ -49,7 +48,7 @@ public class AgenciasController {
     @GET
     @Path("/{cgc}")
     public Response getByCgc(@PathParam("cgc") int cgc) {
-        //Agencia agencia = repository.findByCgc(cgc);
+
         return Response.status(Response.Status.OK).entity(agenciaService.getByCgc(cgc)).build();
     }
 

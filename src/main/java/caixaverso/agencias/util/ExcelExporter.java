@@ -13,7 +13,7 @@ public class ExcelExporter {
 
         // Cabeçalho
         Row headerRow = sheet.createRow(0);
-        String[] headers = {"CGC", "Nome", "Responsável", "Endereço", "Data Inauguração"};
+        String[] headers = {"CGC", "Nome", "Responsável", "cep", "cidade", "estado", "Data Inauguração"};
 
         CellStyle headerStyle = workbook.createCellStyle();
         Font headerFont = workbook.createFont();
@@ -33,9 +33,9 @@ public class ExcelExporter {
             row.createCell(0).setCellValue(agenciaDto.getCgc());
             row.createCell(1).setCellValue(agenciaDto.getNomeAgencia());
             row.createCell(2).setCellValue(agenciaDto.getNomeGestor());
-            row.createCell(3).setCellValue(agenciaDto.getEndereco());
-            //row.createCell(4).setCellValue(agenciaDto.cidade != null ? agenciaDto.cidade : "");
-            //row.createCell(5).setCellValue(agenciaDto.estado != null ? agenciaDto.estado : "");
+            row.createCell(3).setCellValue(agenciaDto.getCep());
+            row.createCell(4).setCellValue(agenciaDto.getCidade() != null ? agenciaDto.getCidade() : "");
+            row.createCell(5).setCellValue(agenciaDto.getEstado() != null ? agenciaDto.getEstado() : "");
             row.createCell(6).setCellValue(agenciaDto.getDataInauguracao().toString());
         }
 
