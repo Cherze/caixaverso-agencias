@@ -11,6 +11,7 @@ public class AgenciaMapper {
         agencia.setDataInauguracao(agenciaDTO.getDataInauguracao());
         agencia.setCgc(agenciaDTO.getCgc());
         agencia.setCep(agenciaDTO.getCep());
+        agencia.setNumero(agenciaDTO.getNumero());
         agencia.setNomeGestor(agenciaDTO.getNomeGestor());
         return agencia;
     }
@@ -22,6 +23,7 @@ public class AgenciaMapper {
         agencia.setNomeAgencia(agenciaDto.getNomeAgencia());
         agencia.setNomeGestor(agenciaDto.getNomeGestor());
         agencia.setCep(agenciaDto.getCep());
+        agencia.setNumero(agenciaDto.getNumero());
         agencia.setDataInauguracao(agenciaDto.getDataInauguracao());
         return agencia;
     }
@@ -36,6 +38,8 @@ public class AgenciaMapper {
         agenciaDto.setCep(agencia.getCep());
         agenciaDto.setDataInauguracao(agencia.getDataInauguracao());
         agenciaDto.setNomeGestor(agencia.getNomeGestor());
+        agenciaDto.setLogradouro(agencia.getLogradouro());
+        agenciaDto.setNumero(agencia.getNumero());
         agenciaDto.setCidade(agencia.getCidade());
         agenciaDto.setEstado(agencia.getEstado());
         return agenciaDto;

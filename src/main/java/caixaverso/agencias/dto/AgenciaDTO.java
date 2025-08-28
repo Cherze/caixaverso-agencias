@@ -14,6 +14,8 @@ public class AgenciaDTO {
     @JsonProperty("data_inauguracao")
     private LocalDate dataInauguracao;
     private String cep;
+    private String logradouro;
+    private int numero;
     private String estado;
     private String cidade;
 
@@ -71,5 +73,21 @@ public class AgenciaDTO {
 
     public void setCidade(String cidade) {
         this.cidade = cidade;
+    }
+
+    public String getLogradouro() {
+        return logradouro;
+    }
+
+    public void setLogradouro(String logradouro) {
+        this.logradouro = logradouro;
+    }
+
+    public int getNumero() {
+        return numero;
+    }
+
+    public void setNumero(int numero) {
+        this.numero = numero;
     }
 }

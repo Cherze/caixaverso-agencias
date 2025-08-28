@@ -28,6 +28,10 @@ public class Agencia {
     private LocalDate dataInauguracao;
     @Column(name = "cep", nullable = false, length = 9)
     private String cep;
+    @Column(name = "logradouro", nullable = false)
+    private String logradouro;
+    @Column(name = "numero", nullable = true)
+    private int numero;
     @Column(name = "estado", nullable = false)
     private String estado;
     @Column(name = "cidade", nullable = false)
@@ -40,12 +44,14 @@ public class Agencia {
                    String nomeGestor,
                    int cgc,
                    LocalDate dataInauguracao,
-                   String cep) {
+                   String cep, String logradouro, int numero) {
         this.nomeAgencia = nomeAgencia;
         this.nomeGestor = nomeGestor;
         this.cgc = cgc;
         this.dataInauguracao = dataInauguracao;
         this.cep = cep;
+        this.logradouro = logradouro;
+        this.numero = numero;
     }
 
     public Agencia() {}
@@ -131,5 +137,21 @@ public class Agencia {
     public void setCreatedAt(LocalDateTime createdAt) {
 
         this.createdAt = createdAt;
+    }
+
+    public String getLogradouro() {
+        return logradouro;
+    }
+
+    public void setLogradouro(String logradouro) {
+        this.logradouro = logradouro;
+    }
+
+    public int getNumero() {
+        return numero;
+    }
+
+    public void setNumero(int numero) {
+        this.numero = numero;
     }
 }

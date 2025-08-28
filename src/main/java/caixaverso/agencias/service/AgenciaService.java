@@ -81,9 +81,6 @@ public class AgenciaService {
                 case "nome_gestor":
                     agencia.setNomeGestor(value.toString());
                     break;
-                case "endereco":
-                    agencia.setCep(value.toString());
-                    break;
                 case "data_inauguracao":
                     agencia.setDataInauguracao(LocalDate.parse(value.toString()));
                     break;
@@ -91,6 +88,8 @@ public class AgenciaService {
                     agencia.setCep(value.toString());
                     buscarDadosCep(agencia);
                     break;
+                case "numero":
+                    agencia.setNumero(Integer.parseInt(value.toString()));
             }
         });
     }
@@ -101,6 +100,7 @@ public class AgenciaService {
             agencia.setCidade(cepResponse.getLocalidade());
             agencia.setEstado(cepResponse.getUf());
             agencia.setCep(cepResponse.getCep());
+            agencia.setLogradouro(cepResponse.getLogradouro());
         } else throw new CepNaoEncontradoException("CEP não encontrado.");
 
     }

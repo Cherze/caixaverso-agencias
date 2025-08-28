@@ -35,7 +35,6 @@ public class AgenciasController {
     @Transactional
     public Response addAgencia(AgenciaDTO agenciaDto) {
         Agencia agencia = agenciaService.create(agenciaDto);
-        //repository.persist(AgenciaMapper.toEntity(agenciaDto));
         return Response.status(Response.Status.CREATED).entity(agencia).build();
     }
 
@@ -57,7 +56,6 @@ public class AgenciasController {
     @Path("/{cgc}")
     public Response updateAgencia(@PathParam("cgc") int cgc, AgenciaDTO agenciaDto){
         agenciaService.update(cgc,agenciaDto);
-        //Optional<Agencia> agencia = repository.findByCgc(cgc);
         return Response.status(Response.Status.OK).build();
     }
     @DELETE
