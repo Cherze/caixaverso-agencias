@@ -45,10 +45,23 @@ public class AgenciasController {
     }
 
     @GET
-    @Path("/{cgc}")
+    @Path("/cgc/{cgc}")
     public Response getByCgc(@PathParam("cgc") int cgc) {
 
         return Response.status(Response.Status.OK).entity(agenciaService.getByCgc(cgc)).build();
+    }
+    @GET
+    @Path("/filtro/estado/{estado}")
+    public Response getByUf(@PathParam("estado") String uf) {
+
+        return Response.status(Response.Status.OK).entity(agenciaService.getByUf(uf)).build();
+    }
+
+    @GET
+    @Path("/filtro/cidade/{cidade}")
+    public Response getByCidade(@PathParam("cidade") String cidade) {
+
+        return Response.status(Response.Status.OK).entity(agenciaService.getByCidade(cidade)).build();
     }
 
     @PUT

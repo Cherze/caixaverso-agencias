@@ -104,4 +104,20 @@ public class AgenciaService {
         } else throw new CepNaoEncontradoException("CEP não encontrado.");
 
     }
+
+    public List<AgenciaDTO> getByUf(String uf) {
+        List<Agencia> agencia = repository.findByUf(uf);
+        if (agencia == null) {
+            throw new AgenciaNaoExisteException("Agencia no estado " + uf + " nao encontrada.");
+        }
+        return agencia.stream().map(AgenciaMapper::toDto).toList();
+    }
+
+    public List<AgenciaDTO> getByCidade(String cidade) {
+        List<Agencia> agencia = repository.findByCidade(cidade);
+        if (agencia == null) {
+            throw new AgenciaNaoExisteException("Agencia na cidade " + cidade + " nao encontrada.");
+        }
+        return agencia.stream().map(AgenciaMapper::toDto).toList();
+    }
 }
