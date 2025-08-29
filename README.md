@@ -29,9 +29,13 @@ Opcionais:
 ## Rodando a aplicação
 
 Disponível no endereço <http://localhost:8080/agencias>.
+
 	- Busca por CGC da agência </cgc>
+ 
  	- Filtro por estado </filtro/estado/>
+
   	- Filtro por cidade </filtro/cidade/>
+   
    	- Exportar para excel </export/excel>
 
 JSONs para teste:
