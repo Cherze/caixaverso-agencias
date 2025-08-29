@@ -3,31 +3,36 @@
 Feito por:
 
   Cherze Carvalho Freitas
-
-  Raphael dos Santos Pinto
   
   Fabio Monteiro Crispim
   
   Marcos Guilherme Grandi
+  
+  Raphael dos Santos Pinto
+    
 
 ## Descrição
 
 API REST utilizando o framework Quarkus que permite o cadastro e manutenção de registros em uma base de dados, implementando as operações básicas de um CRUD completo.
 
+> ENTITY escolhida: Agências CAIXA. 
+
 Persistência em banco de dados H2.
 
-Obcionais:
-  - 🔄 Consumo de uma **API pública externa**
-  - ✨ Funcionalidade extra relacionada ao tema (ex: relatório, filtro por categoria, exportação, etc)
+Opcionais:
+  - 🔄 Consumo da API pública externa VIACEP
+  - ✨ Funcionalidade extra como filtro por categoria (agências por cidade ou UF) e exportação para excel.
   - 🔐 Autenticação básica (Basic Auth)
   - 📃 Integração com **Swagger/OpenAPI** para documentação
   - 💻 Frontend
 
-> ENTITY escolhida: Agências CAIXA. 
-
 ## Rodando a aplicação
 
 Disponível no endereço <http://localhost:8080/agencias>.
+	- Busca por CGC da agência </cgc>
+ 	- Filtro por estado </filtro/estado/>
+  	- Filtro por cidade </filtro/cidade/>
+   	- Exportar para excel </export/excel>
 
 JSONs para teste:
 
@@ -40,6 +45,7 @@ JSONs para teste:
 	"cep" : "49001108"
 }
 
+
 {
 	"nome_agencia" : "Serigy",
 	"nome_gestor" : "Amanda",
@@ -49,8 +55,14 @@ JSONs para teste:
 	"cep" : "44088714"
 } 
 
-CEP válido para teste de PUT/PATCH: 44022072
-
+{
+	"nome_agencia" : "Feira",
+	"nome_gestor" : "Cherze",
+	"cgc" : "0068",
+	"numero" : "250",
+	"data_inauguracao" : "1925-02-17",
+	"cep" : "44022072"
+}
 
 
 
