@@ -20,15 +20,18 @@ API REST utilizando o framework Quarkus que permite o cadastro e manutenção de
 Persistência em banco de dados H2.
 
 Opcionais:
-  - 🔄 Consumo da API pública externa VIACEP
+  - 🔄 Consumo da API pública externa VIACEP (retorna logradouro, cidade e estado por CEP)
   - ✨ Funcionalidade extra como filtro por categoria (agências por cidade ou UF) e exportação para excel.
-  - 🔐 Autenticação básica (Basic Auth)
+  - 🔐 Autenticação básica (Basic Auth)*
   - 📃 Integração com **Swagger/OpenAPI** para documentação
   - 💻 Frontend
 
+ 
 ## Rodando a aplicação
 
 Disponível no endereço <http://localhost:8080/agencias>.
+
+FRONT-END disponível em <http://localhost:8080/>
 
 	- Busca por CGC da agência </cgc>
  
@@ -38,7 +41,9 @@ Disponível no endereço <http://localhost:8080/agencias>.
    
    	- Exportar para excel </export/excel>
 
-JSONs para teste:
+Documentação SWAGGER/OpenAPI <http://localhost:8080/q/swagger-ui/#/>
+
+JSONs para teste via POSTMAN:
 
 {
 	"nome_agencia" : "Francisco Porto",

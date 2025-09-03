@@ -15,8 +15,10 @@ public class AgenciaRepository implements PanacheRepository<Agencia> {
         return find("nomeAgencia", nome).firstResultOptional();
     }
     public Agencia findByCgc(int cgc){
+
         return find("cgc", cgc).firstResult();
     }
+
     public List<Agencia> findByUf(String estado){
         return find("LOWER(estado) LIKE LOWER(?1)", "%" + estado + "%").stream().toList();
     }

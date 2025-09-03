@@ -2,7 +2,6 @@ package caixaverso.agencias.controller;
 
 import caixaverso.agencias.dto.AgenciaDTO;
 import caixaverso.agencias.model.Agencia;
-import caixaverso.agencias.repository.AgenciaRepository;
 import caixaverso.agencias.service.AgenciaService;
 import caixaverso.agencias.util.ExcelExporter;
 import jakarta.transaction.Transactional;
@@ -10,8 +9,6 @@ import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-//import org.eclipse.microprofile.openapi.annotations.Operation;
-//import org.eclipse.microprofile.openapi.annotations.tags.Tag;
 import java.io.ByteArrayOutputStream;
 import java.util.List;
 import java.util.Map;

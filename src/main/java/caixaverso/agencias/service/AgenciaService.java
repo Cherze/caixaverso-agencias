@@ -8,9 +8,7 @@ import caixaverso.agencias.exception.CepNaoEncontradoException;
 import caixaverso.agencias.model.Agencia;
 import caixaverso.agencias.repository.AgenciaRepository;
 import jakarta.enterprise.context.ApplicationScoped;
-import jakarta.inject.Inject;
 import org.eclipse.microprofile.rest.client.inject.RestClient;
-
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Map;
@@ -31,7 +29,7 @@ public class AgenciaService {
     public Agencia create(AgenciaDTO agenciaDto) {
         Agencia agencia = repository.findByCgc(agenciaDto.getCgc());
         if (agencia != null) {
-            throw new AgenciaJaExisteException("Agencia ja cadastrada");
+            throw new AgenciaJaExisteException("A agência " + agencia.getCgc() + " " + agencia.getNomeAgencia() + " ja está cadastrada.");
         }
         agencia = AgenciaMapper.toEntity(agenciaDto);
         buscarDadosCep(agencia);
